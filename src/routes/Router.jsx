@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { Home } from "../pages/Home";
 import { NotFound } from "../pages/NotFound";
 import { SignIn } from "../pages/SignIn";
@@ -12,25 +12,26 @@ import { EditList } from "../pages/EditList";
 
 export const Router = () => {
   const auth = useSelector((state) => state.auth.isSignIn)
+  const nav = useNavigate()
 
   return (
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/signup" component={SignUp} />
+      <Routes>
+        <Route path="/signin" element={SignIn} />
+        <Route path="/signup" element={SignUp} />
         {auth ? (
           <>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/task/new" component={NewTask} />
-            <Route exact path="/list/new" component={NewList} />
-            <Route exact path="/lists/:listId/tasks/:taskId" component={EditTask} />
-            <Route exact path="/lists/:listId/edit" component={EditList} />
+            <Route path="/" element={Home} />
+            <Route path="/task/new" element={NewTask} />
+            <Route path="/list/new" element={NewList} />
+            <Route path="/lists/:listId/tasks/:taskId" element={EditTask} />
+            <Route path="/lists/:listId/edit" element={EditList} />
           </>
         ) : (
-          <Redirect to="/signin" />
+          nav("/signin", { replace: true })
         )}
-        <Route component={NotFound} />
-      </Switch>
+        <Route element={NotFound} />
+      </Routes>
     </BrowserRouter>
   )
 }
