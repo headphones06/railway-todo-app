@@ -2,18 +2,27 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
+import dayjs from 'dayjs';
+import timezone from 'dayjs/plugin/timezone';
+import utc from 'dayjs/plugin/utc';
 import { Header } from '../components/Header';
 import { url } from '../const';
 import './home.scss';
 
 export function Home() {
+  dayjs.extend(utc);
+  dayjs.extend(timezone);
+  dayjs.tz.setDefault('Europe/London'); //APIのフォーマットを基に調整。入力は日本現地時間のままでOK
+
   const [isDoneDisplay, setIsDoneDisplay] = useState('todo'); // todo->未完了 done->完了
   const [lists, setLists] = useState([]);
   const [selectListId, setSelectListId] = useState();
   const [tasks, setTasks] = useState([]);
+  const [date, setDate] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [cookies] = useCookies();
   const handleIsDoneDisplayChange = (e) => setIsDoneDisplay(e.target.value);
+
   useEffect(() => {
     axios
       .get(`${url}/lists`, {
@@ -116,6 +125,8 @@ export function Home() {
 // 表示するタスク
 function Tasks(props) {
   const { tasks, selectListId, isDoneDisplay } = props;
+  const lim = dayjs();
+
   if (tasks === null) return <></>;
 
   if (isDoneDisplay == 'done') {
@@ -127,6 +138,8 @@ function Tasks(props) {
             <li key={key} className="task-item">
               <Link to={`/lists/${selectListId}/tasks/${task.id}`} className="task-item-link">
                 {task.title}
+                <br />
+                {dayjs.tz(task.limit).format('YYYY-MM-DD hh:mm')}
                 <br />
                 {task.done ? '完了' : '未完了'}
               </Link>
@@ -144,6 +157,9 @@ function Tasks(props) {
           <li key={key} className="task-item">
             <Link to={`/lists/${selectListId}/tasks/${task.id}`} className="task-item-link">
               {task.title}
+              <br />
+              {dayjs.tz(task.limit).format('YYYY - MM - DD hh:mm　')}
+              あと{dayjs.tz(task.limit).diff(dayjs(), 'day') + 1}日
               <br />
               {task.done ? '完了' : '未完了'}
             </Link>
