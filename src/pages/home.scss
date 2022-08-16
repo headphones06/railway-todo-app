@@ -19,9 +19,14 @@
   overflow-x: auto;
 }
 
+.list-button {
+  padding: 0px;
+  margin: 0px;
+}
+
 .list-tab-item {
   flex-shrink: 0;
-  width: 100px;
+  width: 150px;
   padding: 0 25px;
   text-overflow: normal;
   margin-right: 5px;
