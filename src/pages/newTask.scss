@@ -11,7 +11,8 @@
 
 .new-task-select-list,
 .new-task-title,
-.new-task-detail {
+.new-task-detail,
+.new-task-limit {
   width: 300px;
   margin-bottom: 25px;
 }
@@ -30,4 +31,27 @@
 
 .error-message {
   color: #ff3333;
+}
+
+@media screen and (max-width: 1000px) {
+  /* 1000px以下に適用されるCSS（タブレット用） */
+  .new-task {
+    width: calc(100% - 20px);
+  }
+  .new-task-select-list,
+  .new-task-title,
+  .new-task-detail,
+  .new-task-limit {
+    margin-top: 5px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  /* 420px以下に適用されるCSS（スマホ用） */
+  .new-task-select-list,
+  .new-task-title,
+  .new-task-detail,
+  .new-task-limit {
+    margin-left: 10px;
+  }
 }

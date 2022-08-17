@@ -13,3 +13,11 @@
   color: #ffffff;
   margin: auto 25px auto auto;
 }
+
+@media screen and (max-width: 1000px) {
+  /* 1000px以下に適用されるCSS（タブレット用） */
+}
+
+@media screen and (max-width: 320px) {
+  /* 320px以下に適用されるCSS（スマホ用） */
+}

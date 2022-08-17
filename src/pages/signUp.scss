@@ -29,3 +29,14 @@
 .error-message {
   color: #ff3333;
 }
+
+@media screen and (max-width: 550px) {
+  /* 550px以下に適用されるCSS  */
+  .signup {
+    width: calc(100% - 20px);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  /* 320px以下に適用されるCSS（スマホ用） */
+}

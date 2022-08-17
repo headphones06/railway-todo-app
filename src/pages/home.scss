@@ -17,6 +17,7 @@
   list-style: none;
   display: flex;
   overflow-x: auto;
+  margin-top: 10px;
   .list-tab-item {
     flex-shrink: 0;
     width: 150px;
@@ -49,7 +50,7 @@
 
 .task-item {
   list-style-type: none;
-  height: 70px;
+  height: 100px;
   width: calc(100% - 25px);
   background-color: #f5f5f5;
   padding-left: 25px;
@@ -75,4 +76,18 @@
 
 .display-select {
   width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .taskList {
+    width: calc(100% - 20px);
+  }
+
+  .list-tab-item {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  /* 320px以下に適用されるCSS（スマホ用） */
 }
