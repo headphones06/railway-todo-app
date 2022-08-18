@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 import { Navigate, useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Header } from '../components/Header';
-import './signin.scss';
+import '../scss/signin.scss';
 import { signIn } from '../authSlice';
 import { url } from '../const';
 

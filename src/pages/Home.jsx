@@ -7,7 +7,7 @@ import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import { Header } from '../components/Header';
 import { url } from '../const';
-import './home.scss';
+import '../scss/home.scss';
 
 export function Home() {
   dayjs.extend(utc);
