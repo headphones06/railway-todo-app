@@ -1,6 +1,6 @@
 import React from 'react';
 import ReatDOM from 'react-dom/client';
-import './index.scss';
+import './scss/index.scss';
 import { CookiesProvider } from 'react-cookie';
 import { Provider } from 'react-redux';
 import App from './App';

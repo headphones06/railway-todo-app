@@ -21,3 +21,14 @@
   height: 40px;
   border-radius: 5px;
 }
+
+@media screen and (max-width: 1000px) {
+  /* 1000px以下に適用されるCSS（タブレット用） */
+  .new-list {
+    width: calc(100% - 20px);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  /* 320px以下に適用されるCSS（スマホ用） */
+}

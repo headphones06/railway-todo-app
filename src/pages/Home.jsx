@@ -7,7 +7,7 @@ import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import { Header } from '../components/Header';
 import { url } from '../const';
-import './home.scss';
+import '../scss/home.scss';
 
 export function Home() {
   dayjs.extend(utc);
@@ -89,20 +89,22 @@ export function Home() {
               </p>
             </div>
           </div>
-          <ul className="list-tab">
+          <div className="list-tab" role="tablist">
             {lists.map((list, key) => {
               const isActive = list.id === selectListId;
               return (
-                <li
+                <button
+                  role="tab"
+                  aria-selected={`${isActive ? 'true' : 'false'}`}
                   key={key}
                   className={`list-tab-item ${isActive ? 'active' : ''}`}
                   onClick={() => handleSelectList(list.id)}
                 >
                   {list.title}
-                </li>
+                </button>
               );
             })}
-          </ul>
+          </div>
           <div className="tasks">
             <div className="tasks-header">
               <h2>タスク一覧</h2>

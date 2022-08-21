@@ -10,10 +10,14 @@
 }
 
 .edit-task-title,
-.edit-task-detail,
 .edit-task-limit {
   width: 300px;
   margin-bottom: 25px;
+}
+
+.edit-task-detail {
+  width: 300px;
+  height: 100px;
 }
 
 .delete-task-button {
@@ -35,4 +39,25 @@
 
 .error-message {
   color: #ff3333;
+}
+
+@media screen and (max-width: 1000px) {
+  /* 1000px以下に適用されるCSS（タブレット用） */
+  .edit-task {
+    width: calc(100% - 20px);
+  }
+  .edit-task-title,
+  .edit-task-detail,
+  .edit-task-limit {
+    margin-top: 5px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  /* 420px以下に適用されるCSS（スマホ用） */
+  .edit-task-title,
+  .edit-task-detail,
+  .edit-task-limit {
+    margin-left: 10px;
+  }
 }
